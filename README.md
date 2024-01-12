@@ -13,5 +13,12 @@ Essentially, we have a model available in [this notebook](Property-Friends-basic
 
 3. Once the deployment is done, make a Dockerfile that sets up the environment for use.
 
+# Implementation notes
+
+### 1. The Refactoring
+
+During the refactoring of the model, a few things came to mind. It is stated that the "Client is happy with the current results", and as such, the output of the model was kept identical to the notebook (as is mandatory in any such refactoring). However, I'd like to point out that the model's pipeline, as it stands, is not as robust as it could be. No cross-validation is done, no other regression models were tested and no feature engineering was done (in this notebook). This seems to me a very big problem, that needs to be addressed, as the quality of the model's predictions that currently seem to please the client will likely cease to do so in the near future.
+
+Now, with the model refactor complete (available with test script in [/model/model.py](/model/model.py)), we move on to a FastAPI architecture that can serve this model.
 
 
