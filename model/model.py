@@ -1,4 +1,7 @@
 from __future__ import annotations # Needed to use better TypeHints
+import joblib # Pickle-like pyhton module used to save/load models
+from pathlib import Path # Resolve paths
+from model.data import load_data # For testing
 
 import pandas as pd
 import numpy as np
@@ -15,17 +18,18 @@ from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.model_selection import GridSearchCV # Not being used, should be used or removed
 
-
+model_folder = Path(__file__).resolve().parent
 class RealEstateChilePriceModel():
     def __init__(self) -> None:
         """
         This class is meant to abstract for the use of different models in the future.
         Currently, it is responsible for training the predictive model and evaluating new inputs.
         """
+        
         self.model = None # So we can check if fit was called at least once
         pass
 
-    def fit(self, train: np.ndarray, test: np.ndarray) -> RealEstateChilePriceModel:
+    def fit(self, train: np.ndarray | pd.DataFrame, test: np.ndarray | pd.DataFrame, save_when_done: bool = True) -> RealEstateChilePriceModel:
         """
         Method used to fit pre-programmed model to input data.
         Basically the same as Scikit-Learn's fit function, except we build the whole model here.
@@ -67,10 +71,13 @@ class RealEstateChilePriceModel():
         # Calling pipeline.fit, essentially, training happens here
         self.model = pipeline.fit(train[train_cols], train[target])
 
+        # Saving model for later use
+        if save_when_done: self.save_current_model()
+
         # In case user wants/needs to assign trained model to different variable, return self
         return self
 
-    def predict(self, input_data: np.ndarray) -> float:
+    def predict(self, input_data: np.ndarray | pd.DataFrame) -> float:
         """
         Method used to predict regressed values for input data.
         Basically the same as Scikit-Learn's predict function.
@@ -79,10 +86,16 @@ class RealEstateChilePriceModel():
         prediction = self.model.predict(input_data)
         return prediction
     
+    def load_pretrained_model(self, model_path: str = model_folder / "model.pkl") -> RealEstateChilePriceModel:
+        self.model = joblib.load(model_path) 
+        return self
+
+    def save_current_model(self, model_path: str = model_folder / "model.pkl"):
+        joblib.dump(self.model, model_path)
+
 if __name__ == "__main__":
     # Load data
-    train = pd.read_csv("data/train.csv")
-    test = pd.read_csv("data/test.csv")
+    train, test = load_data()
     
     # Instantiate model
     model = RealEstateChilePriceModel()

@@ -161,3 +161,4 @@ cython_debug/
 
 # Client's private data
 data
+model/*.pkl

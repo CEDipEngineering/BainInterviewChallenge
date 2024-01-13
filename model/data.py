@@ -4,8 +4,8 @@ import pandas as pd
 import numpy as np
 
 # Placeholder paths, using pathlib for OS compatibility and robustness
-_train_data_path = Path("../data/train.py").resolve()
-_test_data_path = Path("../data/test.py").resolve()
+_train_data_path = Path("../data/train.csv").resolve()
+_test_data_path = Path("../data/test.csv").resolve()
 
 def load_data() -> tuple[np.ndarray, np.ndarray]:
     """

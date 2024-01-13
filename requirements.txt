@@ -1,4 +1,7 @@
+-e .
 category-encoders
 scikit-learn
 pandas
 ipykernel
+fastapi
+uvicorn
