@@ -1,0 +1,4 @@
+PID:134350 (TID:140081100044096) INFO:	[2024-01-13 18:54:28,461] Model loaded successfuly from path /home/cedip/Repos/BainInterviewChallenge/model/model.pkl, beginning operation...
+PID:134350 (TID:140081100044096) INFO:	[2024-01-13 18:54:28,461] Server started, listening for calls
+PID:134350 (TID:140081100044096) INFO:	[2024-01-13 18:54:31,148] [MODEL INPUT] API Call made for prediction using data: {'type': 'departamento', 'sector': 'vitacura', 'net_usable_area': 140.0, 'net_area': 170.0, 'n_rooms': 4.0, 'n_bathroom': 4.0, 'latitude': -33.40123, 'longitude': -70.58055999999998, 'price': 11900.0}
+PID:134350 (TID:140081100044096) INFO:	[2024-01-13 18:54:31,157] [MODEL OUTPUT] API call is returning predicted value, which is `13070.575463557223`

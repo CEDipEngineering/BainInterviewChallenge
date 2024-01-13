@@ -25,4 +25,10 @@ Now, with the model refactor complete (available with test script in [/model/mod
 
 As an initial implementation, I opted to use FastAPI, given its robustness and ease of use. I created a basic application which has a single route, `/predict`, which allows only for POST requests, containing the necessary data (as of yet unencrypted). The sent data then is funneled into a saved version of the pre-trained model (this is done so that we need'nt train the model every time the server boots, and it is reasonable to assume that in production, we will use some more elaborate model, that will be saved and loaded in a more cloud-friendly way, so modularizing this seemed like the best option). The prediction is returned as a single float. In the future, a more elaborate response could be constructed, including error margins, uncertainties, or other such valuable information.
 
+I then added some very simple logging using the native python module. This could be improved in a real deployment setting, using existing logging servers the client might already have, using encryption, or using rotating log files with backups, but for the purposes of this project, this seemed sufficient.
+
+Logs are stored in the [logs folder](./logs/), and have a file_name with the day the server was started.
+
+Log format is 
+`PID:(process id) (TID:(thread id)) (log level name): [(human-readable timestamp)] (message)`
 
