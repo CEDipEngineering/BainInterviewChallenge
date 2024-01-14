@@ -2,9 +2,11 @@ import logging
 from pathlib import Path
 from datetime import date
 import pandas as pd
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, Security, status
+from fastapi.security import APIKeyHeader
 from pydantic import BaseModel
 from model.model import RealEstateChilePriceModel, model_folder # Import our defined model
+from api.key_manager import KeyManager
 
 # Create a log path, ensure it's available to write on
 log_path = Path(f"logs/log_{str(date.today())}.txt").resolve()
@@ -30,6 +32,19 @@ except FileNotFoundError:
     logging.error("Failed to load archived model! Models must be trained and made available before running API server!")
     raise Exception("Pre-trained model cound not be found! Please train your model before running the API, or update api/app/api.py with the correct filepath!")
 
+# Api key management stuff
+key_manager = KeyManager() # Manager object, used to validate keys
+
+# Basic API authentication found and adapted from https://medium.com/@valerio.uberti23/a-beginners-guide-to-using-api-keys-in-fastapi-and-python-256fe284818d
+api_key_header = APIKeyHeader(name="X-API-Key") # Header key used to deliver API Key
+def get_api_key(api_key_header: str = Security(api_key_header)) -> str:
+    if key_manager.validateKey(api_key_header):
+        return api_key_header
+    raise HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Invalid or missing API Key",
+    )
+
 app = FastAPI()
 logging.info("Server started, listening for calls")
 
@@ -48,7 +63,7 @@ class PredictionInput(BaseModel):
     price          : float # This is wrong, must change
 
 @app.post("/predict")
-async def predict(model_input: PredictionInput):
+async def predict(model_input: PredictionInput, api_key: str = Security(get_api_key)):
     # Pydantic's Base Model can be turned into a dictionary easily
     input_dict = model_input.model_dump()
 

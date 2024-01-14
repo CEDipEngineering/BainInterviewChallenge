@@ -24,3 +24,15 @@ INFO:	[2024-01-14 09:16:27,126] Attempting validation of key Totally a valid key
 INFO:	[2024-01-14 09:16:27,128] Validation for key Totally a valid key failed, key is not known
 INFO:	[2024-01-14 09:16:27,129] Attempting validation of key b4beedad-7aa5-4605-8ca1-e3a96807a978
 INFO:	[2024-01-14 09:16:27,130] Validation successful for key b4beedad-7aa5-4605-8ca1-e3a96807a978, remaining lifespan 24.0h
+INFO:	[2024-01-14 09:36:22,064] Model loaded successfuly from path /home/cedip/Repos/BainInterviewChallenge/model/model.pkl, beginning operation...
+INFO:	[2024-01-14 09:36:22,064] Server started, listening for calls
+INFO:	[2024-01-14 09:36:30,225] Attempting validation of key WRONGKEY
+INFO:	[2024-01-14 09:36:30,229] Validation for key WRONGKEY failed, key is not known
+INFO:	[2024-01-14 09:37:51,561] Attempting validation of key WRONGKEY
+INFO:	[2024-01-14 09:37:51,561] Validation for key WRONGKEY failed, key is not known
+INFO:	[2024-01-14 09:38:01,578] Attempting validation of key WRONGKEY
+INFO:	[2024-01-14 09:38:01,578] Validation for key WRONGKEY failed, key is not known
+INFO:	[2024-01-14 09:38:04,149] Attempting validation of key b4beedad-7aa5-4605-8ca1-e3a96807a978
+INFO:	[2024-01-14 09:38:04,151] Validation successful for key b4beedad-7aa5-4605-8ca1-e3a96807a978, remaining lifespan 24.0h
+INFO:	[2024-01-14 09:38:04,151] [MODEL INPUT] API Call made for prediction using data: {'type': 'departamento', 'sector': 'vitacura', 'net_usable_area': 140.0, 'net_area': 170.0, 'n_rooms': 4.0, 'n_bathroom': 4.0, 'latitude': -33.40123, 'longitude': -70.58055999999998, 'price': 11900.0}
+INFO:	[2024-01-14 09:38:04,160] [MODEL OUTPUT] API call is returning predicted value, which is `13070.575463557223`
