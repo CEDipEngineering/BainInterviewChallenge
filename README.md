@@ -32,3 +32,4 @@ Logs are stored in the [logs folder](./logs/), and have a file_name with the day
 Log format is 
 `PID:(process id) (TID:(thread id)) (log level name): [(human-readable timestamp)] (message)`
 
+Once the basic logging was complete, I moved on to the API key solution. For the purposes of this project, I opted to make a simple key vault, in the `api/secrets` folder, included in the .gitignore. This key vault is very basic, and is implemented in the form of a csv. In the future this could easily be swapped with a SQL vault, or a different Docker container with a Key Vault solution. The implementation of this api key manager is done in the [key manager](/api/key_manager.py) file, and essentially only needs two methods, one to generate new keys (which come with a mandatory fixed lifespan) and one to validate a given key.

@@ -1,0 +1,26 @@
+INFO:	[2024-01-14 09:05:43,416] Generated new key b4beedad-7aa5-4605-8ca1-e3a96807a978 with lifespan of 24h
+INFO:	[2024-01-14 09:07:44,180] Attempting validation of key Totally a valid key
+INFO:	[2024-01-14 09:07:44,183] Validation for key Totally a valid key failed, key is not known
+INFO:	[2024-01-14 09:07:44,183] Attempting validation of key b4beedad-7aa5-4605-8ca1-e3a96807a978
+INFO:	[2024-01-14 09:07:44,183] Validation for key b4beedad-7aa5-4605-8ca1-e3a96807a978 failed, key is not known
+INFO:	[2024-01-14 09:09:00,169] Attempting validation of key Totally a valid key
+INFO:	[2024-01-14 09:09:09,476] Attempting validation of key Totally a valid key
+INFO:	[2024-01-14 09:09:09,479] Validation for key Totally a valid key failed, key is not known
+INFO:	[2024-01-14 09:09:09,479] Attempting validation of key b4beedad-7aa5-4605-8ca1-e3a96807a978
+INFO:	[2024-01-14 09:09:09,479] Validation for key b4beedad-7aa5-4605-8ca1-e3a96807a978 failed, key is not known
+INFO:	[2024-01-14 09:09:31,639] Attempting validation of key Totally a valid key
+INFO:	[2024-01-14 09:09:31,642] Validation for key Totally a valid key failed, key is not known
+INFO:	[2024-01-14 09:09:31,642] Attempting validation of key b4beedad-7aa5-4605-8ca1-e3a96807a978
+INFO:	[2024-01-14 09:15:16,237] Attempting validation of key Totally a valid key
+INFO:	[2024-01-14 09:15:16,240] Validation for key Totally a valid key failed, key is not known
+INFO:	[2024-01-14 09:15:16,240] Attempting validation of key b4beedad-7aa5-4605-8ca1-e3a96807a978
+INFO:	[2024-01-14 09:15:29,759] Attempting validation of key Totally a valid key
+INFO:	[2024-01-14 09:15:29,765] Validation for key Totally a valid key failed, key is not known
+INFO:	[2024-01-14 09:15:29,765] Attempting validation of key b4beedad-7aa5-4605-8ca1-e3a96807a978
+INFO:	[2024-01-14 09:15:49,558] Attempting validation of key Totally a valid key
+INFO:	[2024-01-14 09:15:49,560] Validation for key Totally a valid key failed, key is not known
+INFO:	[2024-01-14 09:15:49,561] Attempting validation of key b4beedad-7aa5-4605-8ca1-e3a96807a978
+INFO:	[2024-01-14 09:16:27,126] Attempting validation of key Totally a valid key
+INFO:	[2024-01-14 09:16:27,128] Validation for key Totally a valid key failed, key is not known
+INFO:	[2024-01-14 09:16:27,129] Attempting validation of key b4beedad-7aa5-4605-8ca1-e3a96807a978
+INFO:	[2024-01-14 09:16:27,130] Validation successful for key b4beedad-7aa5-4605-8ca1-e3a96807a978, remaining lifespan 24.0h
