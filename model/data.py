@@ -13,10 +13,19 @@ def load_data() -> tuple[np.ndarray, np.ndarray]:
     Loads the train and test data into pandas DataFrames.
     Can be updated in the future, to access diferent datasources
     (if data is public, Pandas can actually just receive a URL to 
-     S3 Bucket or Azure Storage Container, which is neat)
+     S3 Bucket or Azure Storage Container, which is useful)
     """
-    train = pd.read_csv(_train_data_path)
-    test = pd.read_csv(_test_data_path)
+    # Training data
+    try:
+        train = pd.read_csv(_train_data_path)
+    except FileNotFoundError:
+        raise Exception("Training data not found, please, make sure there is a data directory at the root of the project, with the train.csv file")
+    # Test data
+    try:
+        test = pd.read_csv(_test_data_path)
+    except FileNotFoundError:
+        raise Exception("Test data not found, please, make sure there is a data directory at the root of the project, with the test.csv file")
+    
     return train, test
 
 if __name__ == "__main__":

@@ -27,6 +27,13 @@ key_file_storage_path.touch(mode=0o754, exist_ok=True)
 
 class KeyManager():
     def __init__(self) -> None:
+        """
+        API Key manager.
+        Has two functionalities, generating new keys, 
+        and validating any given string, to check for valid keys.
+        Key generation has a lifespan functionality, 
+        meaning keys will stop working after a set amount of time.
+        """
         self.keys = None
         pass
     
@@ -73,11 +80,13 @@ class KeyManager():
             "creationTimestamp": curr_timestamp,
             "keyLifespan": keyLifespan,
         }
+        # Store new key info on csv database
         if self.keys is None:
             self.keys = pd.DataFrame(new_line, index=[0])
         else:
             self.keys.append(new_line, ignore_index=True)
         self.keys.to_csv(key_file_storage_path)
+        # Log key generation.
         logging.info(f"Generated new key {new_key} with lifespan of {keyLifespan}h")
         return new_key
     
