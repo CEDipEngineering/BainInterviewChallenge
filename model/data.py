@@ -4,8 +4,9 @@ import pandas as pd
 import numpy as np
 
 # Placeholder paths, using pathlib for OS compatibility and robustness
-_train_data_path = Path("../data/train.csv").resolve()
-_test_data_path = Path("../data/test.csv").resolve()
+root_path = Path(__file__).parent.parent.resolve()
+_train_data_path = root_path / 'data' / 'train.csv'
+_test_data_path =  root_path / 'data' / 'test.csv'
 
 def load_data() -> tuple[np.ndarray, np.ndarray]:
     """
@@ -17,3 +18,6 @@ def load_data() -> tuple[np.ndarray, np.ndarray]:
     train = pd.read_csv(_train_data_path)
     test = pd.read_csv(_test_data_path)
     return train, test
+
+if __name__ == "__main__":
+    print(load_data()[0].loc[0])

@@ -1,7 +1,6 @@
 from __future__ import annotations # Needed to use better TypeHints
 import joblib # Pickle-like pyhton module used to save/load models
 from pathlib import Path # Resolve paths
-from model.data import load_data # For testing
 
 import pandas as pd
 import numpy as np
@@ -94,6 +93,7 @@ class RealEstateChilePriceModel():
         joblib.dump(self.model, model_path)
 
 if __name__ == "__main__":
+    from data import load_data # For testing
     # Load data
     train, test = load_data()
     
