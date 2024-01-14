@@ -59,12 +59,13 @@ class KeyManager():
         logging.info(f"Validation failed for key {apiKey}, key lifespan has expired, please generate a new key or contact system administrator")
         return False
 
-    def generateNewKey(self, keyLifespan: float | None = 24) -> str:
+    def generateNewKey(self, keyLifespan: float | None) -> str:
         """
         Generates a new key, potentially with a specified lifespan in hours (defaults to 24h)
         To generate the key, we simply get a new random uuid.
         We then save the key to our storage medium of choice (.csv) and keep track of when it was created and its lifespan
         """
+        if keyLifespan is None: keyLifespan = 24 # Handles direct None inputs
         new_key = uuid.uuid4() # New random uuid, will be the new key
         curr_timestamp = datetime.now() # get current timestamp
         new_line = {

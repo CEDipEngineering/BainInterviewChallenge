@@ -1,3 +1,4 @@
+from __future__ import annotations
 import logging
 from pathlib import Path
 from datetime import date
@@ -61,6 +62,10 @@ class PredictionInput(BaseModel):
     latitude       : float
     longitude      : float
     price          : float # This is wrong, must change
+
+@app.get("/new_key")
+async def new_key(keyLifespan: float = None):
+    return key_manager.generateNewKey(keyLifespan)
 
 @app.post("/predict")
 async def predict(model_input: PredictionInput, api_key: str = Security(get_api_key)):

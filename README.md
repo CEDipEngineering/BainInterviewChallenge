@@ -6,6 +6,44 @@ Challenge details specified [here](Challenge.md).
 
 Essentially, we have a model available in [this notebook](Property-Friends-basic-model.ipynb), and must re-factor this model, such that it follows best practices, whilst also making it available through an API, running in a Docker container.
 
+# How to use
+
+If you wish to simply run the dockerized environment, then [install Docker](https://docs.docker.com/engine/install/), and then build and run the container.
+
+To build:
+
+    $ docker build docker build -t re_chile_prediction_api .
+
+Note that `re_chile_prediction_api` is the name for the container, and can be changed freely. Don't forget the dot at the end.
+
+To run:
+
+    $ docker run -p 8000:8000 re_chile_prediction_api
+
+Also note that, without the -p clause, you will not be able to access the container from your machine. I am using port 8000 on my localhost, but if you wish to use another, change 8000:8000 to 8000:<YOUR-PORT>.
+
+If you wish to run the project locally, you will need python (at least 3.8). Install dependencies listed on requirements.txt
+
+    $ python3 -m pip install -r requirements.txt
+
+Then, to train a new model, you should run
+
+    $ python3 model/model.py
+
+Once you have trained a new model, you can start the api using
+
+    $ python3 api/main.py
+
+Which will start the uvicorn server for FastAPI on port 8000.
+
+### API Keys
+
+To make requests to the api, you will need a new api key. For the sake of simplicity a placeholder route was created in the api to get you a fresh key. A get request to the `/new_key` route will return a fresh key, with a lifespan of 24h. Lifespan can be specified, as a float, in hours, via the query parameter keyLifespan, i.e. `/new_key/?keyLifespan=48` to generate a 48h key.
+
+With a key in hands, one must make a post request, with the data that the model will need to make a prediction, whilst setting the `X-API-Key` header to the received api key, as done in the [example notebook](/api/api_test.ipynb).
+
+The required formatting for the sent json can be found in the automatically generated documentation for the api, available in the `/docs` route once the api is running.
+
 # Proposal
 1. Restructure model into a class. This grants several benefits, such as abstraction, ease-of-maintenance, high modularity, and many more.
 

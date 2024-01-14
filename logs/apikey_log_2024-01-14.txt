@@ -36,3 +36,7 @@ INFO:	[2024-01-14 09:38:04,149] Attempting validation of key b4beedad-7aa5-4605-
 INFO:	[2024-01-14 09:38:04,151] Validation successful for key b4beedad-7aa5-4605-8ca1-e3a96807a978, remaining lifespan 24.0h
 INFO:	[2024-01-14 09:38:04,151] [MODEL INPUT] API Call made for prediction using data: {'type': 'departamento', 'sector': 'vitacura', 'net_usable_area': 140.0, 'net_area': 170.0, 'n_rooms': 4.0, 'n_bathroom': 4.0, 'latitude': -33.40123, 'longitude': -70.58055999999998, 'price': 11900.0}
 INFO:	[2024-01-14 09:38:04,160] [MODEL OUTPUT] API call is returning predicted value, which is `13070.575463557223`
+INFO:	[2024-01-14 11:36:33,046] Model loaded successfuly from path /home/cedip/Repos/BainInterviewChallenge/model/model.pkl, beginning operation...
+INFO:	[2024-01-14 11:36:33,047] Server started, listening for calls
+INFO:	[2024-01-14 11:37:21,106] Model loaded successfuly from path /home/cedip/Repos/BainInterviewChallenge/model/model.pkl, beginning operation...
+INFO:	[2024-01-14 11:37:21,107] Server started, listening for calls
