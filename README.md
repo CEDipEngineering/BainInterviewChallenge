@@ -72,6 +72,8 @@ Log format is
 
 Once the basic logging was complete, I moved on to the API key solution. For the purposes of this project, I opted to make a simple key vault, in the `api/app/secrets` folder, included in the .gitignore. This key vault is very basic, and is implemented in the form of a csv. In the future this could easily be swapped with a SQL vault, or a different Docker container with a Key Vault solution. The implementation of this api key manager is done in the [key manager](/api/app/key_manager.py) file, and essentially only needs two methods, one to generate new keys (which come with a mandatory fixed lifespan) and one to validate a given key. The key manager also has its own separate log, in the same folder as the api, albeit with different filenames. The log structure is simpler, and is meant only to record the generation of new keys, and record every validation attempt and its result.
 
+After all this implementation, I opted to add another very similar route to `/predict`, named `/predict_batch`, which as one might expect, is meant to allow for batched predictions of many input values at once. This helps prevent network clutter and avoids user having to send many requests in quick succession. Documentation is in `/docs` route, and a working example is provided in the same [api test notebook](./api/api_test.ipynb).
+
 # 3. Dockerization
 
 Dockerizing the application was very simple. A [Dockerfile](./Dockerfile) was created, which copies the content of this project into a container image. Then, when this image is run, it starts up the API service, and accepts requests via the usual default port 8000. A few tweaks to file references were made to fix some dependency issues.
