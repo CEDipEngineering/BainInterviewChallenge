@@ -12,7 +12,7 @@ If you wish to simply run the dockerized environment, then [install Docker](http
 
 To build:
 
-    $ docker build docker build -t re_chile_prediction_api .
+    $ docker build -t re_chile_prediction_api .
 
 Note that `re_chile_prediction_api` is the name for the container, and can be changed freely. Don't forget the dot at the end.
 

@@ -82,9 +82,13 @@ class KeyManager():
         }
         # Store new key info on csv database
         if self.keys is None:
-            self.keys = pd.DataFrame(new_line, index=[0])
+            try:
+                self.keys = pd.read_csv(key_file_storage_path, index_col=0)
+            except FileNotFoundError:
+                self.keys = pd.DataFrame(new_line, index=[0])
         else:
-            self.keys.append(new_line, ignore_index=True)
+            df = pd.DataFrame(new_line, index=[0])
+            self.keys = pd.concat([df, new_line], ignore_index=True)
         self.keys.to_csv(key_file_storage_path)
         # Log key generation.
         logging.info(f"Generated new key {new_key} with lifespan of {keyLifespan}h")
