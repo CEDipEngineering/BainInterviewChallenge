@@ -76,3 +76,15 @@ Once the basic logging was complete, I moved on to the API key solution. For the
 
 Dockerizing the application was very simple. A [Dockerfile](./Dockerfile) was created, which copies the content of this project into a container image. Then, when this image is run, it starts up the API service, and accepts requests via the usual default port 8000. A few tweaks to file references were made to fix some dependency issues.
 
+# Final steps:
+
+After finishing the implementation, I figured I'd take a shot at making a better model (at least a model in accordance with best practices).
+
+The testing for this model can be found in the [model_development notebook](./model_development.ipynb), and in the end, I achieved a model with better accuracy, without relying on the actual target of the prediction.
+
+The final model was a Random Forest Regressor, with some simple Feature Engineering. The final metrics achieved were:
+
+|Model Name| RMSE | MAPE | MAE |
+|-|-|-|-|
+|Original|10254|40%|5859|
+|My RFR|4420|12%|2136|

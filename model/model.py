@@ -44,7 +44,7 @@ class RealEstateChilePriceModel():
 
         # X Columns
         train_cols = [
-            col for col in train.columns if col not in ['id', 'target']
+            col for col in train.columns if col not in ['id', 'target'] # The target column is called 'price' and is included here
         ]
 
         # Categorical variables
